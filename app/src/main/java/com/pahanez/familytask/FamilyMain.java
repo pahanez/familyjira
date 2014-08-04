@@ -1,26 +1,35 @@
 package com.pahanez.familytask;
 
 import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
+import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.AttributeSet;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+
+import com.pahanez.familytask.com.pahanez.familytask.fragments.Register;
+import com.pahanez.familytask.com.pahanez.familytask.fragments.Signup;
 
 
-public class FamilyMain extends Activity {
+public class FamilyMain extends Activity implements Signup.SignUpFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_family_main);
+        getFragmentManager().beginTransaction().add(R.id.act_container, Signup.newInstance("null", "null")).commit();
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.family_main, menu);
-        return true;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.family_main, menu);
+//        return true;
+//    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -32,5 +41,23 @@ public class FamilyMain extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void initFragment(Fragment fragment) {
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.replace(R.id.act_container, fragment);
+        ft.commit();
+    }
+
+    @Override
+    public void onViewClicked(int id) {
+        switch (id){
+            case R.id.signin:
+                    initFragment(null);
+                break;
+            case R.id.register:
+                    initFragment(Register.newInstance());
+                break;
+        }
     }
 }

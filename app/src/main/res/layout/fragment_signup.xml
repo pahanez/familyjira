@@ -1,0 +1,49 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bad_blue"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+    tools:context=".com.pahanez.familytask.fragments.Signup">
+
+    <!-- TODO: Update blank fragment layout -->
+    <com.romainpiel.shimmer.ShimmerTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:typeface="monospace"
+        android:layout_margin="10dp"
+        android:textSize="50sp"
+        android:id="@+id/shimmer_title"
+        android:text="FamilyJira" />
+
+
+    <info.hoang8f.widget.FButton
+        android:layout_width="200dp"
+        android:id="@+id/signin"
+        android:layout_centerInParent="true"
+        android:text="Sign In"
+        fbutton:buttonColor="@color/fbutton_color_green_sea"
+        fbutton:shadowEnabled="true"
+        fbutton:shadowHeight="5dp"
+        android:textColor="@android:color/white"
+        fbutton:cornerRadius="5dp"
+        android:layout_height="wrap_content" />
+
+    <info.hoang8f.widget.FButton
+        android:layout_width="200dp"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
+        android:text="Register"
+        fbutton:buttonColor="@color/fbutton_color_peter_river"
+        fbutton:shadowEnabled="true"
+        android:id="@+id/register"
+        android:textColor="@android:color/white"
+        fbutton:shadowHeight="5dp"
+        fbutton:cornerRadius="5dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/signin" />
+
+
+</RelativeLayout>
