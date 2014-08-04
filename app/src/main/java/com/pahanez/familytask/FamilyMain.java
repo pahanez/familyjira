@@ -3,25 +3,20 @@ package com.pahanez.familytask;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.AttributeSet;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.pahanez.familytask.com.pahanez.familytask.fragments.Register;
 import com.pahanez.familytask.com.pahanez.familytask.fragments.Signup;
 
 
-public class FamilyMain extends Activity implements Signup.SignUpFragmentInteractionListener {
+public class FamilyMain extends Activity implements Signup.FragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_family_main);
-        getFragmentManager().beginTransaction().add(R.id.act_container, Signup.newInstance("null", "null")).commit();
+        getFragmentManager().beginTransaction().add(R.id.act_container, Signup.newInstance()).commit();
     }
 
 //    @Override
@@ -43,10 +38,18 @@ public class FamilyMain extends Activity implements Signup.SignUpFragmentInterac
         return super.onOptionsItemSelected(item);
     }
 
-    private void initFragment(Fragment fragment) {
+    private void initFragment(Fragment fragment , boolean backstack) {
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.replace(R.id.act_container, fragment);
+
+        if(backstack)
+            ft.addToBackStack(null);
+
         ft.commit();
+    }
+
+    private void initFragment(Fragment fragment){
+        initFragment(fragment,false);
     }
 
     @Override
@@ -56,7 +59,7 @@ public class FamilyMain extends Activity implements Signup.SignUpFragmentInterac
                     initFragment(null);
                 break;
             case R.id.register:
-                    initFragment(Register.newInstance());
+                    initFragment(Register.newInstance(),true);
                 break;
         }
     }

@@ -1,0 +1,24 @@
+package com.pahanez.familytask.com.pahanez.familytask.fragments;
+
+import android.app.ActionBar;
+import android.app.Fragment;
+import android.os.Bundle;
+import android.view.View;
+
+abstract class Parent extends Fragment{
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        setActionBarTitle();
+    }
+
+    protected void setActionBarTitle(){
+        String title = getActionBarTitle();
+
+        ActionBar actionbar = getActivity().getActionBar();
+        actionbar.setTitle(title);
+    }
+
+    protected abstract String getActionBarTitle();
+
+}

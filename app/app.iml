@@ -62,10 +62,11 @@
     <orderEntry type="jdk" jdkName="Android API 20 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="fbutton-1.0.5" level="project" />
-    <orderEntry type="library" exported="" name="support-v4-13.0.0" level="project" />
+    <orderEntry type="library" exported="" name="support-v4-18.0.0" level="project" />
     <orderEntry type="library" exported="" name="support-v13-13.0.0" level="project" />
     <orderEntry type="library" exported="" name="floatlabel-1.0" level="project" />
     <orderEntry type="library" exported="" name="library-1.2.0" level="project" />
+    <orderEntry type="module" module-name="wishlist" exported="" />
   </component>
 </module>
 
