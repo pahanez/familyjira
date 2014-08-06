@@ -2,6 +2,7 @@ package com.pahanez.familytask.com.pahanez.familytask.fragments;
 
 
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.util.Log;
@@ -22,6 +23,7 @@ import com.parse.ParseUser;
 public class Login extends Parent {
 
     private Button mLogin;
+    private FragmentInteractionListener mListener;
 
     @Override
     protected String getActionBarTitle() {
@@ -47,7 +49,17 @@ public class Login extends Parent {
     @Override
     protected void findViews() {
         mLogin = mFind.find(R.id.log_login);
+    }
 
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            mListener = (FragmentInteractionListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement FragmentInteractionListener");
+        }
     }
 
     @Override
@@ -55,14 +67,16 @@ public class Login extends Parent {
         mLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ParseUser.logInInBackground("p37td7","kodobase", new LogInCallback() {
+                mListener.startProgress();
+                ParseUser.logInInBackground("p37td7", "kodobase", new LogInCallback() {
                     @Override
                     public void done(ParseUser parseUser, ParseException e) {
-                        if (null == e){
-                            Log.e("p37td8","" + parseUser.getEmail() + " username " + parseUser.getUsername() + "  pass " + parseUser.getSessionToken());
-                        }else{
-                            Log.e("p37td8","bad login == " + e );
+                        if (null == e) {
+                            Log.e("p37td8", "" + parseUser.getEmail() + " username " + parseUser.getUsername() + "  pass " + parseUser.getSessionToken());
+                        } else {
+                            Log.e("p37td8", "bad login == " + e);
                         }
+                        mListener.stopProgress();
                     }
                 });
             }

@@ -5,7 +5,11 @@ import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.animation.AnimationUtils;
 
+import com.github.kevinsawicki.wishlist.ViewFinder;
+import com.github.kevinsawicki.wishlist.ViewUtils;
 import com.pahanez.familytask.com.pahanez.familytask.fragments.FragmentInteractionListener;
 import com.pahanez.familytask.com.pahanez.familytask.fragments.Login;
 import com.pahanez.familytask.com.pahanez.familytask.fragments.Register;
@@ -14,11 +18,21 @@ import com.pahanez.familytask.com.pahanez.familytask.fragments.Signup;
 
 public class FamilyMain extends Activity implements FragmentInteractionListener {
 
+    private View mProgress;
+    private ViewFinder mFind;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_family_main);
         getFragmentManager().beginTransaction().add(R.id.act_container, Signup.newInstance()).commit();
+
+        mFind = new ViewFinder(this);
+        findViews();
+    }
+
+    private void findViews() {
+        mProgress = mFind.find(R.id.progressView);
     }
 
 //    @Override
@@ -27,6 +41,8 @@ public class FamilyMain extends Activity implements FragmentInteractionListener 
 //        getMenuInflater().inflate(R.menu.family_main, menu);
 //        return true;
 //    }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -50,6 +66,8 @@ public class FamilyMain extends Activity implements FragmentInteractionListener 
         ft.commit();
     }
 
+
+
     private void initFragment(Fragment fragment){
         initFragment(fragment,false);
     }
@@ -67,5 +85,35 @@ public class FamilyMain extends Activity implements FragmentInteractionListener 
                     android.util.Log.e("p37td8" , "reg reg");
                 break;
         }
+    }
+
+    @Override
+    public void startProgress() {
+        fadeIn(mProgress).show(mProgress);
+    }
+
+    @Override
+    public void stopProgress() {
+        hide(mProgress).fadeOut(mProgress);
+    }
+
+    private FamilyMain fadeIn(final View view) {
+           view.startAnimation(AnimationUtils.loadAnimation(this, android.R.anim.fade_in));
+        return this;
+    }
+
+    private FamilyMain fadeOut(final View view) {
+            view.startAnimation(AnimationUtils.loadAnimation(this, android.R.anim.fade_out));
+        return this;
+    }
+
+    private FamilyMain show(final View view) {
+        ViewUtils.setGone(view, false);
+        return this;
+    }
+
+    private FamilyMain hide(final View view) {
+        ViewUtils.setGone(view, true);
+        return this;
     }
 }

@@ -5,4 +5,6 @@ package com.pahanez.familytask.com.pahanez.familytask.fragments;
  */
 public interface FragmentInteractionListener {
     public void onViewClicked(int id);
+    public void startProgress();
+    public void stopProgress();
 }
