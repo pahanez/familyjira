@@ -6,11 +6,13 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.pahanez.familytask.com.pahanez.familytask.fragments.FragmentInteractionListener;
+import com.pahanez.familytask.com.pahanez.familytask.fragments.Login;
 import com.pahanez.familytask.com.pahanez.familytask.fragments.Register;
 import com.pahanez.familytask.com.pahanez.familytask.fragments.Signup;
 
 
-public class FamilyMain extends Activity implements Signup.FragmentInteractionListener {
+public class FamilyMain extends Activity implements FragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,10 +58,13 @@ public class FamilyMain extends Activity implements Signup.FragmentInteractionLi
     public void onViewClicked(int id) {
         switch (id){
             case R.id.signin:
-                    initFragment(null);
+                    initFragment(Login.newInstance(),true);
                 break;
             case R.id.register:
                     initFragment(Register.newInstance(),true);
+                break;
+            case R.id.reg_register:
+                    android.util.Log.e("p37td8" , "reg reg");
                 break;
         }
     }

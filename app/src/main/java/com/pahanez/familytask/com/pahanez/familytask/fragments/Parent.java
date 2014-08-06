@@ -5,10 +5,16 @@ import android.app.Fragment;
 import android.os.Bundle;
 import android.view.View;
 
+import com.github.kevinsawicki.wishlist.ViewFinder;
+
 abstract class Parent extends Fragment{
+
+    protected ViewFinder mFind;
+
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mFind = new ViewFinder(view);
         setActionBarTitle();
     }
 
@@ -18,6 +24,7 @@ abstract class Parent extends Fragment{
         ActionBar actionbar = getActivity().getActionBar();
         actionbar.setTitle(title);
     }
+
 
     protected abstract String getActionBarTitle();
 

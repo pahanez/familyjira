@@ -8,6 +8,7 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.pahanez.familytask.R;
 
@@ -20,6 +21,7 @@ import com.pahanez.familytask.R;
 public class Register extends Parent {
 
     private FragmentInteractionListener mListener;
+    private Button mButton;
 
     public static Register newInstance() {
         Register fragment = new Register();
@@ -33,6 +35,24 @@ public class Register extends Parent {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_register, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mButton = mFind.find(R.id.reg_register);
+        mButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onButtonPressed(v.getId());
+            }
+        });
+    }
+
+    public void onButtonPressed(int id) {
+        if (mListener != null) {
+            mListener.onViewClicked(id);
+        }
     }
 
     @Override

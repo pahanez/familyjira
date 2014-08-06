@@ -31,4 +31,5 @@ dependencies {
     compile 'com.romainpiel.shimmer:library:1.2.0@aar'
     compile 'com.iangclifton.android:floatlabel:1.0'
     compile project(':wishlist')
+    compile files('libs/Parse-1.5.1.jar')
 }

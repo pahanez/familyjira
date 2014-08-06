@@ -12,5 +12,6 @@
     <string name="register_confpass">Confirm Password</string>
     <string name="register_email">Email</string>
     <string name="register">Register</string>
+    <string name="login">Login</string>
 
 </resources>

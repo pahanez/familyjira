@@ -1,0 +1,37 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bad_blue"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+    tools:context=".com.pahanez.familytask.fragments.Login">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        >
+    <com.iangclifton.android.floatlabel.FloatLabel
+        android:id="@+id/log_username"
+        android:layout_width="@dimen/dp200"
+        android:layout_height="wrap_content"
+        android:hint="@string/register_username" />
+    <com.iangclifton.android.floatlabel.FloatLabel
+        android:id="@+id/log_email"
+        android:layout_width="@dimen/dp200"
+        android:layout_height="wrap_content"
+        android:hint="@string/register_pass" />
+
+        <info.hoang8f.widget.FButton
+            android:layout_width="200dp"
+            android:id="@+id/log_login"
+            android:layout_centerInParent="true"
+            android:text="@string/login"
+            fbutton:buttonColor="@color/fbutton_color_green_sea"
+            fbutton:shadowEnabled="true"
+            fbutton:shadowHeight="5dp"
+            android:textColor="@android:color/white"
+            fbutton:cornerRadius="5dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</RelativeLayout>
