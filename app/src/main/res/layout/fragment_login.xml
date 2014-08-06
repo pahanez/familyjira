@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/register_username" />
     <com.iangclifton.android.floatlabel.FloatLabel
-        android:id="@+id/log_email"
+        android:id="@+id/log_pass"
         android:layout_width="@dimen/dp200"
         android:layout_height="wrap_content"
         android:hint="@string/register_pass" />

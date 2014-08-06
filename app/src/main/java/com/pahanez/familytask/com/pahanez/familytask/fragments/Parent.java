@@ -16,7 +16,13 @@ abstract class Parent extends Fragment{
         super.onViewCreated(view, savedInstanceState);
         mFind = new ViewFinder(view);
         setActionBarTitle();
+        findViews();
+        initViews();
     }
+
+    protected abstract void initViews();
+
+    protected abstract void findViews();
 
     protected void setActionBarTitle(){
         String title = getActionBarTitle();
