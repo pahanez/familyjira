@@ -15,6 +15,7 @@
         android:layout_height="match_parent"
         android:background="@color/progress_back"
         android:visibility="gone"
+        android:clickable="true"
         android:id="@+id/progressView"
         />
 

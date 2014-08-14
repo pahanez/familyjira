@@ -13,5 +13,6 @@
     <string name="register_email">Email</string>
     <string name="register">Register</string>
     <string name="login">Login</string>
+    <string name="title_activity_login">LoginActivity</string>
 
 </resources>
