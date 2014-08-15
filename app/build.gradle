@@ -30,6 +30,7 @@ dependencies {
     compile 'info.hoang8f:fbutton:1.0.5'
     compile 'com.romainpiel.shimmer:library:1.2.0@aar'
     compile 'com.iangclifton.android:floatlabel:1.0'
+    compile 'com.google.code.gson:gson:2.2.2'
     compile project(':wishlist')
     compile files('libs/Parse-1.5.1.jar')
 }
