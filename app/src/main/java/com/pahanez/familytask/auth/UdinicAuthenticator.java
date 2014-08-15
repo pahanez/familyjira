@@ -12,19 +12,8 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import static android.accounts.AccountManager.KEY_BOOLEAN_RESULT;
-import static com.udinic.accounts_authenticator_example.authentication.AccountGeneral.*;
-import static com.udinic.accounts_authenticator_example.authentication.AccountGeneral.AUTHTOKEN_TYPE_FULL_ACCESS;
-import static com.udinic.accounts_authenticator_example.authentication.AccountGeneral.AUTHTOKEN_TYPE_FULL_ACCESS_LABEL;
-import static com.udinic.accounts_authenticator_example.authentication.AccountGeneral.AUTHTOKEN_TYPE_READ_ONLY;
-import static com.udinic.accounts_authenticator_example.authentication.AccountGeneral.AUTHTOKEN_TYPE_READ_ONLY_LABEL;
-import static com.udinic.accounts_authenticator_example.authentication.AccountGeneral.sServerAuthenticate;
+import static com.pahanez.familytask.auth.AccountGeneral.*;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Udini
- * Date: 19/03/13
- * Time: 18:58
- */
 public class UdinicAuthenticator extends AbstractAccountAuthenticator {
 
     private String TAG = "UdinicAuthenticator";

@@ -51,7 +51,7 @@ public class Signup extends Fragment implements View.OnClickListener {
         super.onViewCreated(view, savedInstanceState);
         mShimmer = (ShimmerTextView) view.findViewById(R.id.shimmer_title);
 
-        mRegister = (Button) view.findViewById(R.id.register);
+        mRegister = (Button) view.findViewById(R.id.signup);
         mLogin = (Button) view.findViewById(R.id.signin);
         mRegister.setOnClickListener(this);
         mLogin.setOnClickListener(this);

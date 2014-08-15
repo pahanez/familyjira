@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.iangclifton.android.floatlabel.FloatLabel;
 import com.pahanez.familytask.R;
 
 
@@ -25,7 +26,7 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity {
 
     public final static String PARAM_USER_PASS = "USER_PASS";
 
-    private final int REQ_SIGNUP = 1;
+    public static final int REQ_SIGNUP = 1;
 
     private final String TAG = this.getClass().getSimpleName();
 
@@ -38,7 +39,7 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.act_login);
+        setContentView(R.layout.fragment_login);
         mAccountManager = AccountManager.get(getBaseContext());
 
         String accountName = getIntent().getStringExtra(ARG_ACCOUNT_NAME);
@@ -47,20 +48,18 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity {
             mAuthTokenType = AccountGeneral.AUTHTOKEN_TYPE_FULL_ACCESS;
 
         if (accountName != null) {
-            ((TextView)findViewById(R.id.accountName)).setText(accountName);
+            ((FloatLabel)findViewById(R.id.log_username)).getEditText().setText(accountName);
         }
 
-        findViewById(R.id.submit).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.log_login).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 submit();
             }
         });
-        findViewById(R.id.signUp).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.new_user).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Since there can only be one AuthenticatorActivity, we call the sign up activity, get his results,
-                // and return them in setAccountAuthenticatorResult(). See finishLogin().
                 Intent signup = new Intent(getBaseContext(), SignUpActivity.class);
                 signup.putExtras(getIntent().getExtras());
                 startActivityForResult(signup, REQ_SIGNUP);
@@ -80,8 +79,8 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity {
 
     public void submit() {
 
-        final String userName = ((TextView) findViewById(R.id.accountName)).getText().toString();
-        final String userPass = ((TextView) findViewById(R.id.accountPassword)).getText().toString();
+        final String userName = ((FloatLabel) findViewById(R.id.log_username)).getEditText().getText().toString();
+        final String userPass = ((FloatLabel) findViewById(R.id.log_pass)).getEditText().getText().toString();
 
         final String accountType = getIntent().getStringExtra(ARG_ACCOUNT_TYPE);
 
@@ -89,8 +88,6 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity {
 
             @Override
             protected Intent doInBackground(String... params) {
-
-                Log.d("udinic", TAG + "> Started authenticating");
 
                 String authtoken = null;
                 Bundle data = new Bundle();

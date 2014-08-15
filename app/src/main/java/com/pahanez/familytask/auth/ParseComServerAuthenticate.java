@@ -39,7 +39,7 @@ public class ParseComServerAuthenticate implements AuthenticateServer{
         httpPost.addHeader("X-Parse-REST-API-Key", AccountGeneral.REST_API_ID);
         httpPost.addHeader("Content-Type", "application/json");
 
-        String user = "{\"username\":\"" + email + "\",\"password\":\"" + pass + "}";
+        String user = "{\"username\":\"" + email + "\",\"password\":\"" + pass + "\",\"phone\":\"415-392-0202\"}";
         HttpEntity entity = new StringEntity(user);
         httpPost.setEntity(entity);
 

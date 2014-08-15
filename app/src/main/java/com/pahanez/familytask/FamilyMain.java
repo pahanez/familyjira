@@ -78,7 +78,7 @@ public class FamilyMain extends Activity implements FragmentInteractionListener 
             case R.id.signin:
                     initFragment(Login.newInstance(),true);
                 break;
-            case R.id.register:
+            case R.id.signup:
                     initFragment(Register.newInstance(),true);
                 break;
             case R.id.reg_register:
