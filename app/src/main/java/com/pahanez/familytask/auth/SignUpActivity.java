@@ -46,7 +46,7 @@ public class SignUpActivity extends Activity {
 
     private void createAccount() {
 
-        // Validation!
+        //TODO Validation!
 
         new AsyncTask<String, Void, Intent>() {
 
@@ -56,8 +56,6 @@ public class SignUpActivity extends Activity {
 
             @Override
             protected Intent doInBackground(String... params) {
-
-                Log.d("udinic", TAG + "> Started authenticating");
 
                 String authtoken = null;
                 Bundle data = new Bundle();

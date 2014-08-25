@@ -16,4 +16,6 @@
     <string name="login">Login</string>
     <string name="title_activity_login">LoginActivity</string>
 
+    <string name="font">fonts/title.ttf</string>
+
 </resources>

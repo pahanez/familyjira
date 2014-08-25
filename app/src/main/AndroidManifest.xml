@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.pahanez.familytask" >
 
-    <uses-permission android:name="android.permission.INTERNET" />
+<!--    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -14,10 +14,10 @@
         android:name="com.pahanez.familytask.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="com.pahanez.familytask.permission.C2D_MESSAGE" />
+    <uses-permission android:name="com.pahanez.familytask.permission.C2D_MESSAGE" />-->
 
     <application
-        android:name=".FamilyTaskApp"
+        android:name=".Application"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -28,7 +28,7 @@
 
         </activity>
 
-        <service android:name="com.parse.PushService" />
+      <!--  <service android:name="com.parse.PushService" />
 
         <receiver android:name="com.parse.ParseBroadcastReceiver" >
             <intent-filter>
@@ -45,11 +45,11 @@
 
                 <category android:name="com.pahanez.familytask" />
             </intent-filter>
-        </receiver>
+        </receiver>-->
 
         <activity
             android:name=".LoginActivity"
-            android:label="@string/title_activity_login" >
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -59,7 +59,7 @@
 
         <activity android:name="com.pahanez.familytask.auth.AuthenticatorActivity" android:label="@string/login"/>
         <activity android:name="com.pahanez.familytask.auth.SignUpActivity" android:label="@string/register"/>
-        <service android:name="com.pahanez.familytask.auth.UdinicAuthenticatorService">
+        <service android:name=".auth.FamilyTaskAuthenticatorService">
             <intent-filter>
                 <action android:name="android.accounts.AccountAuthenticator" />
             </intent-filter>

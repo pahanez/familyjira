@@ -14,6 +14,8 @@ import android.widget.Toast;
 import com.iangclifton.android.floatlabel.FloatLabel;
 import com.pahanez.familytask.R;
 
+import java.util.concurrent.locks.ReentrantLock;
+
 
 public class AuthenticatorActivity extends AccountAuthenticatorActivity {
 
@@ -41,7 +43,6 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_login);
         mAccountManager = AccountManager.get(getBaseContext());
-
         String accountName = getIntent().getStringExtra(ARG_ACCOUNT_NAME);
         mAuthTokenType = getIntent().getStringExtra(ARG_AUTH_TYPE);
         if (mAuthTokenType == null)
@@ -60,6 +61,7 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity {
         findViewById(R.id.new_user).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent signup = new Intent(getBaseContext(), SignUpActivity.class);
                 signup.putExtras(getIntent().getExtras());
                 startActivityForResult(signup, REQ_SIGNUP);
@@ -143,6 +145,7 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity {
         setAccountAuthenticatorResult(intent.getExtras());
         setResult(RESULT_OK, intent);
         finish();
+        Log.e("p37td8","result ok");
     }
 
 }

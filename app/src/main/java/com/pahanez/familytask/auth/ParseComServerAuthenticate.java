@@ -19,13 +19,6 @@ import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
-/**
- * Handles the comminication with Parse.com
- *
- * User: udinic
- * Date: 3/27/13
- * Time: 3:30 AM
- */
 public class ParseComServerAuthenticate implements AuthenticateServer{
     @Override
     public String userSignUp(String name, String email, String pass, String authType) throws Exception {
