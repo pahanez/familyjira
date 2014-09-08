@@ -3,46 +3,48 @@ package com.pahanez.familytask;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.app.LoaderManager;
+import android.content.Loader;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 
 import com.github.kevinsawicki.wishlist.ViewFinder;
 import com.github.kevinsawicki.wishlist.ViewUtils;
-import com.pahanez.familytask.com.pahanez.familytask.fragments.FragmentInteractionListener;
+import com.pahanez.familytask.activity.ActivityInteractor;
+import com.pahanez.familytask.activity.presenter.MainPresenter;
+import com.pahanez.familytask.activity.view.MainView;
 import com.pahanez.familytask.com.pahanez.familytask.fragments.Login;
 import com.pahanez.familytask.com.pahanez.familytask.fragments.Register;
-import com.pahanez.familytask.com.pahanez.familytask.fragments.Signup;
+import com.pahanez.familytask.loader.FamilyLoader;
+import com.pahanez.familytask.loader.LoaderCallback;
+import com.pahanez.familytask.loader.MockLoader;
+
+import java.util.Date;
 
 
-public class FamilyMain extends Activity implements FragmentInteractionListener {
+public class FamilyMain extends Activity implements ActivityInteractor , MainView{
 
     private View mProgress;
     private ViewFinder mFind;
+    private MainPresenter mMainPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_family_main);
-        getFragmentManager().beginTransaction().add(R.id.act_container, Signup.newInstance()).commit();
-
         mFind = new ViewFinder(this);
         findViews();
+
+        mMainPresenter = new MainPresenter(this);
+        mMainPresenter.loadData(getLoaderManager());
     }
 
     private void findViews() {
         mProgress = mFind.find(R.id.progressView);
     }
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.family_main, menu);
-//        return true;
-//    }
-
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -69,7 +71,7 @@ public class FamilyMain extends Activity implements FragmentInteractionListener 
 
 
     private void initFragment(Fragment fragment){
-        initFragment(fragment,false);
+        initFragment(fragment, false);
     }
 
     @Override
@@ -88,13 +90,9 @@ public class FamilyMain extends Activity implements FragmentInteractionListener 
     }
 
     @Override
-    public void startProgress() {
-        fadeIn(mProgress).show(mProgress);
-    }
+    public <V> void loaderResult(V result) {
+        android.util.Log.e("p37td8" , "res : " + result);
 
-    @Override
-    public void stopProgress() {
-        hide(mProgress).fadeOut(mProgress);
     }
 
     private FamilyMain fadeIn(final View view) {
@@ -115,5 +113,15 @@ public class FamilyMain extends Activity implements FragmentInteractionListener 
     private FamilyMain hide(final View view) {
         ViewUtils.setGone(view, true);
         return this;
+    }
+
+    @Override
+    public void showProgress() {
+        fadeIn(mProgress).show(mProgress);
+    }
+
+    @Override
+    public void hideProgress() {
+        hide(mProgress).fadeOut(mProgress);
     }
 }

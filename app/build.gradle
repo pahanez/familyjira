@@ -6,7 +6,7 @@ android {
     defaultConfig {
         applicationId 'com.pahanez.familytask'
         minSdkVersion 15
-        targetSdkVersion 20
+        targetSdkVersion 18
         versionCode 1
         versionName '1.0'
     }
@@ -30,6 +30,7 @@ dependencies {
     compile 'info.hoang8f:fbutton:1.0.5'
     compile 'com.romainpiel.shimmer:library:1.2.0@aar'
     compile 'com.iangclifton.android:floatlabel:1.0'
+    compile "com.android.support:appcompat-v7:18.0.+"
     compile 'com.google.code.gson:gson:2.2.2'
     compile project(':wishlist')
     compile files('libs/Parse-1.5.1.jar')
