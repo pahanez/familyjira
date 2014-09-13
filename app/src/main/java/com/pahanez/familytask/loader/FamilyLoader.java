@@ -9,12 +9,14 @@ import com.pahanez.familytask.activity.ActivityInteractor;
 
 import java.lang.ref.WeakReference;
 
+import javax.inject.Inject;
+
 public abstract class FamilyLoader<T> extends AsyncLoader<T> {
 
     private WeakReference<CounterInteractor> mInteractor;
 
-    public FamilyLoader(CounterInteractor interactor ){
-        super(Application.getContext());
+    public FamilyLoader(Context context ,CounterInteractor interactor ){
+        super(context);
         mInteractor = new WeakReference<CounterInteractor>(interactor);
     }
 

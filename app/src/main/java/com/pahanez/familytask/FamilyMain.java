@@ -21,8 +21,11 @@ import com.pahanez.familytask.com.pahanez.familytask.fragments.Register;
 import com.pahanez.familytask.loader.FamilyLoader;
 import com.pahanez.familytask.loader.LoaderCallback;
 import com.pahanez.familytask.loader.MockLoader;
+import com.pahanez.familytask.model.Mock;
 
 import java.util.Date;
+
+import javax.inject.Inject;
 
 
 public class FamilyMain extends Activity implements ActivityInteractor , MainView{
@@ -31,6 +34,9 @@ public class FamilyMain extends Activity implements ActivityInteractor , MainVie
     private ViewFinder mFind;
     private MainPresenter mMainPresenter;
 
+    @Inject Mock mock;
+    @Inject Application mApp;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,8 +44,15 @@ public class FamilyMain extends Activity implements ActivityInteractor , MainVie
         mFind = new ViewFinder(this);
         findViews();
 
+        ((Application)getApplication()).inject(this);
+
         mMainPresenter = new MainPresenter(this);
-        mMainPresenter.loadData(getLoaderManager());
+        android.util.Log.e("p37td8" , "app : " +mApp);
+
+//        ((Application)getApplication()).inject(mMainPresenter);
+
+//        mMainPresenter.loadData(getLoaderManager());
+
     }
 
     private void findViews() {
@@ -91,7 +104,7 @@ public class FamilyMain extends Activity implements ActivityInteractor , MainVie
 
     @Override
     public <V> void loaderResult(V result) {
-        android.util.Log.e("p37td8" , "res : " + result);
+        ((Application)getApplication()).inject(this);
 
     }
 

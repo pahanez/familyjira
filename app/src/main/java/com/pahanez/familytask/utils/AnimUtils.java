@@ -6,7 +6,11 @@ import android.view.animation.AnimationUtils;
 import com.pahanez.familytask.Application;
 import com.pahanez.familytask.R;
 
+import javax.inject.Inject;
+
 public class AnimUtils {
+
+    @Inject static Application mApplication;
 
     public static Animation fadeOut(AnimationListenerImpl listener ){
         return getAnimation(android.R.anim.fade_out ,listener);
@@ -30,13 +34,13 @@ public class AnimUtils {
 
 
     public static Animation getAnimation(int animationId , AnimationListenerImpl listener){
-        Animation animation =  AnimationUtils.loadAnimation(Application.getContext(),animationId);
+        Animation animation =  AnimationUtils.loadAnimation(mApplication,animationId);
         animation.setAnimationListener(listener);
         return animation;
     }
 
     public static Animation getAnimation(int animationId){
-        return AnimationUtils.loadAnimation(Application.getContext(),animationId);
+        return AnimationUtils.loadAnimation(mApplication,animationId);
     }
 
 

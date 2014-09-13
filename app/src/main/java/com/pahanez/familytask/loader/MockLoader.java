@@ -7,8 +7,8 @@ import com.pahanez.familytask.activity.ActivityInteractor;
 import java.util.concurrent.TimeUnit;
 
 public class MockLoader extends FamilyLoader<String>{
-    public MockLoader(CounterInteractor interactor) {
-        super(interactor);
+    public MockLoader(Context context , CounterInteractor interactor) {
+        super(context, interactor);
     }
 
     @Override
