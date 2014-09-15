@@ -1,5 +1,7 @@
 package com.pahanez.familytask;
 
+import android.content.Context;
+
 import com.pahanez.familytask.activity.presenter.MainPresenter;
 
 import javax.inject.Singleton;
@@ -20,4 +22,6 @@ public class ApplicationModule {
     @Provides public Application provideApplication() {
         return mApplication;
     }
+
+    @Provides public Context provideContext() { return mApplication; }
 }
