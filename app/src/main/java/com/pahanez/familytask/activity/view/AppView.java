@@ -5,4 +5,5 @@ package com.pahanez.familytask.activity.view;
  */
 public interface AppView {
     public void setActionTitle();
+    public void prepareActionBar();
 }

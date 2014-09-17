@@ -3,6 +3,8 @@ package com.pahanez.familytask;
 import android.content.Context;
 
 import com.pahanez.familytask.activity.presenter.MainPresenter;
+import com.pahanez.familytask.workers.WorkersModule;
+import com.squareup.otto.Bus;
 
 import javax.inject.Singleton;
 
@@ -19,9 +21,13 @@ public class ApplicationModule {
         this.mApplication = application;
     }
 
-    @Provides public Application provideApplication() {
+    @Provides @Singleton Application provideApplication() {
         return mApplication;
     }
 
-    @Provides public Context provideContext() { return mApplication; }
+    @Provides @Singleton Context provideContext() { return mApplication; }
+
+    @Provides @Singleton Bus provideBus() {
+        return new Bus();
+    }
 }

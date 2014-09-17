@@ -24,8 +24,6 @@ public abstract class BaseActivity extends Activity implements Injector{
         mActivityGraph = ((Application)getApplication()).createScopedGraph(getModules().toArray());
         mActivityGraph.inject(this);
 
-        Object presenter = createPresenter();
-//        ((Application)getApplication()).inject(presenter);
     }
 
     @Override
@@ -43,7 +41,6 @@ public abstract class BaseActivity extends Activity implements Injector{
         mActivityGraph.inject(object);
     }
 
-    protected abstract Object createPresenter();
 
     protected List<Object> getModules(){
         return Collections.emptyList();

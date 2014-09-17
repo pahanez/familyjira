@@ -9,6 +9,9 @@ import com.pahanez.familytask.activity.interactors.AppActivityInteractor;
 import com.pahanez.familytask.activity.presenter.AppPresenter;
 import com.pahanez.familytask.activity.presenter.AppPresenterImpl;
 import com.pahanez.familytask.activity.view.AppView;
+import com.pahanez.familytask.workers.AppActivityWorker;
+import com.pahanez.familytask.workers.WorkersModule;
+import com.squareup.otto.Bus;
 
 import javax.inject.Singleton;
 
@@ -18,7 +21,7 @@ import dagger.Provides;
 /**
  * Created by pindziukou on 15.09.14.
  */
-@Module(injects = {AppActivity.class}, addsTo = ApplicationModule.class )
+@Module(injects = {AppActivity.class}, addsTo = ApplicationModule.class , includes = WorkersModule.class)
 public class AppActivityModule {
 
     private AppView mAppView;
@@ -31,8 +34,8 @@ public class AppActivityModule {
         return mAppView;
     }
 
-    @Provides @Singleton public AppPresenter providePresenter(AppView appView, Application app ){
-        return  new AppPresenterImpl(appView, app);
+    @Provides @Singleton public AppPresenter providePresenter(AppView appView, Application app, AppActivityWorker worker ){
+        return  new AppPresenterImpl(appView, app, worker);
 
     }
 
