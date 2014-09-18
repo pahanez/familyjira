@@ -36,7 +36,6 @@ public class AppActivityModule {
 
     @Provides @Singleton public AppPresenter providePresenter(AppView appView, Application app, AppActivityWorker worker ){
         return  new AppPresenterImpl(appView, app, worker);
-
     }
 
 }
